@@ -1,33 +1,27 @@
-import mongoose from "mongoose";
+import mongoose, { ConnectOptions } from "mongoose";
 
-interface Connection {
-  isConnected?: number;
-}
-
-const connection: Connection = {};
+let isConnected = false;
 
 export const dbConnect = async (): Promise<void> => {
-  if (connection.isConnected) {
-    console.log("Already connected");
+  mongoose.set("strictQuery", true);
+
+  if (isConnected) {
+    console.info("MongoDB is already connected");
     return;
   }
 
-  if (!process.env.MONGOOSE_URI) {
-    throw new Error("MONGOOSE_URI environment variable is not defined");
-  }
-
   try {
-    const db = await mongoose.connect(process.env.MONGOOSE_URI);
+    await mongoose.connect(process.env.MONGOOSE_URI as string, {
+      dbName: "dribbble-clone",
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    } as ConnectOptions);
 
-    connection.isConnected = db.connections[0].readyState;
-
-    if (connection.isConnected === 1) {
-      console.log("Connected to database");
-    } else {
-      throw new Error("Failed to connect to database");
-    }
+    isConnected = true;
+    console.info("MongoDB is now connected");
   } catch (error) {
-    console.error("Database connection error:", error);
-    throw new Error("Database connection error");
+    console.error("Failed to connect to MongoDB", error);
+    throw new Error("MongoDB connection failed");
   }
 };
+

@@ -63,7 +63,8 @@ export const getAllPosts = async () => {
     try {
         await dbConnect();
 
-        const posts = await Post.find().populate("user", "username image followers following");
+
+        const posts = await Post.find().populate("user");
 
         return JSON.parse(JSON.stringify(posts));
     } catch (error) {
@@ -94,9 +95,9 @@ export const incrementViews = async (id: string) => {
         post.views = post.views + 1;
         await post.save();
 
-        revalidatePath('/[id]');
-        revalidatePath('/');
-        revalidatePath('/post/[id]');
+        // revalidatePath('/[id]', 'page');
+        // revalidatePath('/');
+        // revalidatePath('/post/[id]', 'page');
 
         return JSON.parse(JSON.stringify(post));
     } catch (error) {
