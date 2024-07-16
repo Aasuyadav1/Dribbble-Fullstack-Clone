@@ -18,7 +18,6 @@ const BookmarkBtn = ({ isBookmarked, _id }: LikeBtnType) => {
     })
   );
 
-  console.log(optimisticState.isBookmarked);
 
   const handleToggleBookMark = async () => {
     setOptimisticState("");
