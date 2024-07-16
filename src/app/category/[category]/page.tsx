@@ -1,10 +1,9 @@
-import { getAllPosts } from "@/actions/postAction";
-import Card from "@/components/Card";
+import React from "react";
 import Category from "@/components/Category";
-import React from 'react'
-
-const page = async () => {
-  const posts = await getAllPosts();
+import { getPostsByCategory } from "@/actions/postAction";
+import Card from "@/components/Card";
+const page = async  ({ params }: { params: { category: string } }) => {
+  const posts = await getPostsByCategory(params.category);
   return (
     <main className="bg-primary mt-10">
       <Category />
@@ -17,6 +16,6 @@ const page = async () => {
       </div>
     </main>
   );
-}
+};
 
-export default page
+export default page;

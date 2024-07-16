@@ -4,6 +4,7 @@ import Post from "@/model/postModel";
 import { getUser } from "./userAction";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import mongoose from "mongoose";
 
 interface PostActionType {
         title: string;
@@ -82,16 +83,24 @@ export const getPostsByCategory = async (category: string) => {
 
 export const incrementViews = async (id: string) => {
     try {
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            throw new Error(`Invalid post ID: ${id}`);
+        }
+
         await dbConnect();
         const post = await Post.findById(id);
         if (!post) throw new Error("Post not found");
-        post.views++;
+
+        post.views = post.views + 1;
         await post.save();
+
         revalidatePath('/[id]');
         revalidatePath('/');
         revalidatePath('/post/[id]');
+
         return JSON.parse(JSON.stringify(post));
     } catch (error) {
+        console.error(`Failed to increment views for post with ID: ${id}`, error);
         throw new Error(`Failed to increment views for post with ID: ${id}`);
     }
 };
