@@ -1,10 +1,12 @@
 import { getAllPosts } from "@/actions/postAction";
+import PostCard from "@/components/profile/PostCard";
 import Card from "@/components/Card";
 import Category from "@/components/Category";
 import React from 'react'
 
 const page = async () => {
   const posts = await getAllPosts();
+ 
   return (
     <main className="bg-primary mt-10">
       <Category />

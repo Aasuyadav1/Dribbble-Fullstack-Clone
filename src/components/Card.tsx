@@ -3,13 +3,14 @@ import React from "react";
 import Image from "next/image";
 import { PiEyeFill } from "react-icons/pi";
 import LikeBtn from "./LikeBtn";
-import { getUser } from "@/actions/userAction";
+import { auth } from "../../auth";
 import BookmarkBtn from "./BookmarkBtn";
 import DrawerServerWrapper from "./drawer/DrawerServerWrapper";
 
 
 const Card = async ({ data }: any) => {
-  const session = await getUser();
+  const session: any = await auth();
+
 
   const isLiked = data.likes.includes(session?.id) || false;
 
@@ -25,8 +26,9 @@ const Card = async ({ data }: any) => {
           alt="dribbble"
           width={273}
           height={1000}
-        />
-        }          postid={data._id} data={data} />
+        />}
+              
+          postid={data._id} data={data} /> 
         
         <div className="w-full image-gr bottom-0 left-0  group-hover:absolute py-3 px-2 group-hover:flex hidden justify-between items-center overflow-hidden ">
           <h1 className=" font-medium text-primary">{data.title}</h1>

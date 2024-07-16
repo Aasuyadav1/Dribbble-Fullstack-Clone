@@ -66,6 +66,7 @@ export const getAllPosts = async () => {
 
         const posts = await Post.find().populate("user");
 
+
         return JSON.parse(JSON.stringify(posts));
     } catch (error) {
         throw new Error("Failed to fetch posts");
