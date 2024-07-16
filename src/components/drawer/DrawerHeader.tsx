@@ -1,7 +1,7 @@
 'use server'
 import React from "react";
 import Image from "next/image";
-import { getUser } from "@/actions/userAction";
+import { auth } from "../../../auth";
 import BookmarkBtn from "../BookmarkBtn";
 import LikeBtn from "../LikeBtn";
 import FollowBtn from "../FollowBtn";
@@ -13,13 +13,13 @@ const SingleCardHeader = async ({
   postid: string;
   data: any;
 }) => {
-  const session = await getUser();
+  const session:any = await auth();
 
-  const isLiked = data.likes.includes(session?.id) || false;
+  const isLiked = data.likes.includes(session?.user?.id) || false;
 
-  const isBookmarked = data.bookmarks.includes(session?.id) || false;
+  const isBookmarked = data.bookmarks.includes(session?.user?.id) || false;
 
-  const isFollowed = data?.user?.followers?.includes(session?.id) || false;
+  const isFollowed = data?.user?.followers?.includes(session?.user?.id) || false;
 
   console.log("ise followed", isFollowed);
 
@@ -51,7 +51,7 @@ const SingleCardHeader = async ({
           <div className="opacity-80 border border-zinc-400 cursor-pointer text-[40px] rounded-full h-fit w-fit">
             <BookmarkBtn isBookmarked={isBookmarked} _id={data._id} />
           </div>
-          {session?.id !== data?.user?._id ? (
+          {session?.user?.id !== data?.user?._id ? (
             <FollowBtn isFollowed={isFollowed} _id={data?.user?._id} />
           ) : null}
         </div>

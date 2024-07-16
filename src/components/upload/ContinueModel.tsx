@@ -93,31 +93,31 @@ const ContinueModel = ({ updateId, postData }: { updateId?: string, postData?: a
     if (!isUpdate) return;
     console.log(postData)
     
-    // try {
-    //   setLoading(true);
+    try {
+      setLoading(true);
 
-    //   const postUpd = await updatePost({
-    //     title: data.title,
-    //     image: data.image,
-    //     description: data.description,
-    //     category: data.category,
-    //     tags: data.tags,
-    //     id: updateId
-    //   });
+      const postUpd = await updatePost({
+        title: data.title,
+        image: data.image,
+        description: data.description,
+        category: data.category,
+        tags: data.tags,
+        id: updateId
+      });
 
-    //   if (postUpd) {
-    //     setIsOpen(false);
-    //     setIsUpdate(false);
-    //     setLoading(false);
-    //     router.push(`/${postUpd?.user}`);
-    //     emptyData();
-    //   }
+      if (postUpd) {
+        setIsOpen(false);
+        setIsUpdate(false);
+        setLoading(false);
+        router.push(`/${postUpd?.user}`);
+        emptyData();
+      }
 
-    // } catch (error) {
-    //   console.log("error while update post", error)
-    // } finally {
-    //   setLoading(false);
-    // }
+    } catch (error) {
+      console.log("error while update post", error)
+    } finally {
+      setLoading(false);
+    }
   }
 
 

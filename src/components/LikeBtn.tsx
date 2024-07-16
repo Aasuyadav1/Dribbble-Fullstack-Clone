@@ -19,9 +19,6 @@ const LikeBtn = ({ like, _id, isLiked, showCount = true }: LikeBtnType) => {
       isLiked: !optimisticState.isLiked,
     })
   );
-
-  console.log(optimisticState.isLiked);
-
   const handleToggleLike = async () => {
     setOptimisticState('');
     try {

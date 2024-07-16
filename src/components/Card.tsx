@@ -12,9 +12,9 @@ const Card = async ({ data }: any) => {
   const session: any = await auth();
 
 
-  const isLiked = data.likes.includes(session?.id) || false;
+  const isLiked = data.likes.includes(session?.user?.id) || false;
 
-  const isBookmarked = data.bookmarks.includes(session?.id) || false;
+  const isBookmarked = data.bookmarks.includes(session?.user?.id) || false;
 
   return (
     <div className="w-fit  ">

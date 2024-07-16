@@ -3,12 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import NavSearch from "./NavSearch";
 import Profile from "./Profile";
-import Dribbble from '../../public/images/dribbble-logo.png'
-import { getUser } from "@/actions/userAction";
+import Dribbble from "../../../public/images/dribbble-logo.png"
+import { auth } from "../../../auth";
 
 
 const Navbar = async () => {
-  const session = await getUser();
+  const session = await auth();
   return (
     <nav className="flex w-full px-12 py-6 bg-primary justify-between items-center p-4">
       <div>
@@ -25,7 +25,7 @@ const Navbar = async () => {
       <div className="flex gap-10 items-center">
         <NavSearch />
        {
-        session ?  <Profile  session={session}/> : null
+        session ?  <Profile  session={session.user}/> : null
        }
       </div>
     </nav>

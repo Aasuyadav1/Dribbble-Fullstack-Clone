@@ -6,10 +6,10 @@ import { GoHeartFill } from 'react-icons/go';
 import { PiEyeFill } from 'react-icons/pi';
 import BookmarkBtn from '../BookmarkBtn';
 import LikeBtn from '../LikeBtn';
-import { getUser } from '@/actions/userAction';
+import { auth } from '../../../auth';
 
 const PostCard = async ({data, isFotter = true} : {data: any, isFotter?: boolean}) => {
-  const session = await getUser();
+  const session:any = await auth();
 
   const isLiked = data?.likes?.includes(session?.id) || false;
 

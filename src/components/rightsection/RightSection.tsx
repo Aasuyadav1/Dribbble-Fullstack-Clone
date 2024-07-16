@@ -2,7 +2,7 @@
 import React from "react";
 import { FaRegComment } from "react-icons/fa6";
 import { FiEdit2 } from "react-icons/fi";
-import { getUser } from "@/actions/userAction";
+import { auth } from "../../../auth";
 import Link from "next/link";
 import VaulDrawer from "../drawer/vdrawer";
 import CommentForm from "./CommentForm";
@@ -17,13 +17,13 @@ const RightSection = async ({
   postid: string;
   data: any;
 }) => {
-  const session = await getUser();
+  const session:any = await auth();
 
   //   const data = await getPostById(postid);
 
-  const isLiked = data.likes.includes(session?.id) || false;
+  // const isLiked = data.likes.includes(session?.id) || false;
 
-  const isBookmarked = data.bookmarks.includes(session?.id) || false;
+  // const isBookmarked = data.bookmarks.includes(session?.id) || false;
   return (
     <div className="flex flex-col gap-3 items-center ">
       {/* {session && (
@@ -58,7 +58,7 @@ const RightSection = async ({
 
       <PostInfo postid={postid} data={data} />
 
-      {session?.id === data?.user?._id && (
+      {session?.user?.id === data?.user?._id && (
         <Link
           href={`/edit/${data?._id}`}
           className="mt-4 opacity-80 border border-zinc-400 cursor-pointer text-[40px] rounded-full h-fit w-fit p-2"

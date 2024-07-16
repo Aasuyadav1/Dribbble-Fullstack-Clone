@@ -4,13 +4,13 @@ import { getCommentsByPostId } from "@/actions/commentAction";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import DevPopover from "../ui/Popover";
 import clsx from "clsx";
-import { getUser } from "@/actions/userAction";
+import { auth } from "../../../auth";
 import CommentPopover from "./CommentPopover";
 
 const CommentDis = async ({ postid }: { postid: string }) => {
   const comments = await getCommentsByPostId(postid);
 
-  const session = await getUser();
+  const session:any = await auth();
 
   return (
     <div className="w-full flex flex-col gap-4 mt-6">
@@ -33,7 +33,7 @@ const CommentDis = async ({ postid }: { postid: string }) => {
                 </h1>
 
                 {
-                  session?.id === comment.user._id && (
+                  session?.user?.id === comment.user._id && (
                     <CommentPopover commentid={comment._id} postid={postid} data={comment} />
                   )
                 }

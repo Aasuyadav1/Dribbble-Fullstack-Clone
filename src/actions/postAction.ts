@@ -131,6 +131,7 @@ export const updatePost = async ({title, image, description, category, tags, id}
         }
 
         const post = await Post.findByIdAndUpdate(id, updData, { new: true });
+        
         if (!post) throw new Error("Post not found");
         revalidatePath('/[id]');
         revalidatePath('/');

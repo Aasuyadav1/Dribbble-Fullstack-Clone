@@ -5,12 +5,10 @@ import PostCard from "../profile/PostCard";
 import { getPostsByCategory } from "@/actions/postAction";
 import RightSection from "../rightsection/RightSection";
 import { incrementViews } from "@/actions/postAction";
-import VaulDrawer from "./vdrawer";
 import Link from "next/link";
-import { deletePost } from "@/actions/postAction";
 import Button from "../ui/Button";
 import PostDelete from "./PostDelete";
-import { getUser } from "@/actions/userAction";
+import { auth } from "../../../auth";
 
 const DrawerContent = async ({
   postid,
@@ -25,7 +23,7 @@ const DrawerContent = async ({
     (post: any) => post?._id !== postid
   );
 
-  const session = await getUser();
+  const session:any = await auth();
 
   const relatedPosts = await getPostsByCategory(data?.category);
 
@@ -57,7 +55,7 @@ const DrawerContent = async ({
         {data?.description}
       </h2>
      {
-        session?.id === data?.user?._id && (
+        session?.user?.id === data?.user?._id && (
           <div className="w-full mt-24 flex justify-center items-center">
           <div className="flex gap-8 bg-[#f5f5fd] px-4 py-3 rounded-md">
          <Link href={`/uploads/new/${postid}`}>
