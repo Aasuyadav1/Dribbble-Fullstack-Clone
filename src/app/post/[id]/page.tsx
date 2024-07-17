@@ -6,7 +6,8 @@ import { incrementViews } from "@/actions/postAction";
 
 const page = async  ({ params }: any) => {
   const post = await getPostById(params?.id);
-  await incrementViews(params?.id);
+
+   incrementViews(params?.id);
   return (
     <div>
       <div className=" flex justify-center items-center flex-col ">
