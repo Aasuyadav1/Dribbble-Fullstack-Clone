@@ -5,10 +5,10 @@ const SearchCmp = ({ value }: { value: string }) => {
     const [searchVal, setSearchVal] = useState('')
 
     // Update searchVal whenever the value prop changes
-    // useEffect(() => {
-    //     console.log("Value from props:", value); // Log the incoming prop value
-    //     setSearchVal(value);
-    // }, []);
+    useEffect(() => {
+        console.log("Value from props:", value); // Log the incoming prop value
+        setSearchVal(value);
+    }, []);
 
     useEffect(() => {
         console.log("Search value updated:", searchVal); // Log the updated searchVal
