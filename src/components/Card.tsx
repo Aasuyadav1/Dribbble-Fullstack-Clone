@@ -22,9 +22,10 @@ const Card = async ({ data }: any) => {
         <DrawerServerWrapper openBtn={
           <Image
           src={data.image[0]}
-          className="rounded-md w-[273px] aspect-square"
+          className="rounded-md bg-slate-50 w-[282px] h-[211px] aspect-square object-fill"
           alt="dribbble"
           width={273}
+          objectFit="fill"
           height={1000}
         />}
               
