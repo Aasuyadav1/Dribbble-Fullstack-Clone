@@ -53,3 +53,13 @@ export const toggleLike = async ({ post }: LikeType) => {
       console.log("Failed to toggle like", error);
     }
   };
+
+export const getLikesPostByUser = async (user: string) => {
+    try {
+        await dbConnect();
+        const likes = await Like.find({ user });
+        return JSON.parse(JSON.stringify(likes));
+    } catch (error) {
+        throw new Error("Failed to fetch likes");
+    }
+};

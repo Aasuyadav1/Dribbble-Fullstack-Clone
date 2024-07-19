@@ -14,7 +14,7 @@ const layout = async ({
     console.log(user)
     if(!user) return null
   return (
-    <div className='px-20'>
+    <div className='px-2 md:px-16'>
          <ProfileHead User={user}/>
          <ProfileSectionHead params={params.id}/>
         {children}

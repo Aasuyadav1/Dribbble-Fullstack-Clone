@@ -1,9 +1,12 @@
 import React from 'react'
 import { UserType } from '@/types/indexType'
 import Image from 'next/image'
+import { getPostsByUser } from '@/actions/postAction'
+import { getLikesPostByUser } from '@/actions/likeAction'
 
-
-const ProfileHead = ({User}: {User: UserType}) => {
+const ProfileHead = async ({User}: {User: UserType}) => {
+    const numberOfPosts = await getPostsByUser(User?._id)
+    const numberOfLikes = await getLikesPostByUser(User?._id)
   return (
     <div className='w-full mt-10 flex justify-center items-center '>
         <div className='w-full flex justify-center gap-8 items-start'>
@@ -28,10 +31,10 @@ const ProfileHead = ({User}: {User: UserType}) => {
                     <h1 className="text-4xl font-semibold mt-2">{User?.username}</h1>
                 </div>
                 <div className='flex gap-4 items-center transition-all mt-3'>
-                    <span className='text-md text-zinc-900 hover:text-zinc-600 cursor-pointer '>130 Followers</span>
-                    <span className='text-md text-zinc-900 hover:text-zinc-600 cursor-pointer'>10 Following</span>
-                    <span className='cursor-pointer text-md text-zinc-900 hover:text-zinc-600 '>10 Posts</span>
-                    <span className='cursor-pointer text-md text-zinc-900 hover:text-zinc-600 '>100 Likes</span>
+                    <span className='text-md text-zinc-900 hover:text-zinc-600 cursor-pointer '>{User?.followers?.length} Followers</span>
+                    <span className='text-md text-zinc-900 hover:text-zinc-600 cursor-pointer'>{User?.following?.length} Following</span>
+                    <span className='cursor-pointer text-md text-zinc-900 hover:text-zinc-600 '>{numberOfPosts?.length} Posts</span>
+                    <span className='cursor-pointer text-md text-zinc-900 hover:text-zinc-600 '>{numberOfLikes?.length} Likes</span>
                 </div>
             </div>
         </div>

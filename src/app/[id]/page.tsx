@@ -9,7 +9,6 @@ import { getPostsByUser } from '@/actions/postAction'
 const page = async ({params}: any) => {
     const user = await getUserById(params.id)
 
-    console.log("user not login", user)
    
     if(!user) return null
 
@@ -18,7 +17,7 @@ const page = async ({params}: any) => {
     const posts = await getPostsByUser(user._id)
 
   return (
-    <div className='w-ful mt-10 h-full flex flex-wrap gap-4'>
+    <div className='w-ful h-full grid grid-cols-2 gap-4 md:gap-10 md:grid-cols-4 mt-10 '>
      
      {
        posts ? (

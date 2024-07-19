@@ -8,6 +8,7 @@ import BookmarkBtn from "./BookmarkBtn";
 import DrawerServerWrapper from "./drawer/DrawerServerWrapper";
 
 
+
 const Card = async ({ data }: any) => {
   const session: any = await auth();
 
