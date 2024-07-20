@@ -29,6 +29,7 @@ const ContinueModel = ({ updateId, postData }: { updateId?: string, postData?: a
 
   const Options = ["Coding", "UI/UX", "Photography", "Design", "Portfolio"];
 
+
   const mainVariants: any = {
     open: { visibility: "visible", opacity: 1 },
     close: {
@@ -66,6 +67,7 @@ const ContinueModel = ({ updateId, postData }: { updateId?: string, postData?: a
 
   const handlePublish = async () => {
     if (isUpdate) return;
+    if(!data.title || !data.image || !data.category || !data.description || !data.tags) return toast.error("Please fill all the fields");
     try {
       setLoading(true);
       const uploadedData = await createPost({
@@ -94,6 +96,7 @@ const ContinueModel = ({ updateId, postData }: { updateId?: string, postData?: a
 
   const handleUpdate = async () => {
     if (!isUpdate) return;
+    if(!data.title || !data.image || !data.category || !data.description || !data.tags) return toast.error("Please fill all the fields");
     try {
       setLoading(true);
       const postUpd = await updatePost({
