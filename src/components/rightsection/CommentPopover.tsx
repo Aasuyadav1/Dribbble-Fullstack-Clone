@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import { useStore } from "@/store/useStore";
 import { deleteComment } from "@/actions/commentAction";
+import { toast } from "sonner";
 
 const CommentPopover = ({commentid, postid, data} : {
     commentid: string;
@@ -18,17 +19,18 @@ const CommentPopover = ({commentid, postid, data} : {
         setComments('content', data.content);
         setComments('postId', postid);
         setComments('userId', data.user._id);
-
-        console.log(comments)
     }
 
     const handleDelete = async () => {
         try {
             await deleteComment({
                 id: commentid,});
+            toast.success("Comment Deleted");
             setEmptyComments();
+
         } catch (error) {
             console.log(error);
+            toast.error("Something went wrong");
         }
     }
 

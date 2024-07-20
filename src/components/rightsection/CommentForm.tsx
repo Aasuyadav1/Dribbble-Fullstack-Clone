@@ -5,6 +5,7 @@ import CommentDis from "./CommentDis";
 import { createComment } from "@/actions/commentAction";
 import { useStore } from "@/store/useStore";
 import { updateComment } from "@/actions/commentAction";
+import { toast } from "sonner";
 
 const CommentForm = ({ postid }: { postid: string }) => {
   const { setComments, setEmptyComments, comments } = useStore(
@@ -23,9 +24,11 @@ const CommentForm = ({ postid }: { postid: string }) => {
         content: content,
       });
       setContent("");
+      toast.success("Comment Added");
       setEmptyComments();
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
@@ -40,11 +43,13 @@ const CommentForm = ({ postid }: { postid: string }) => {
         postid: comments.postId,
         content: content,
       });
+      toast.success("Comment Updated");
       setContent("");
       setEmptyComments();
       setIsUpdate(false);
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }

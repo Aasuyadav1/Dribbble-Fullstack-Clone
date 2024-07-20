@@ -2,6 +2,7 @@
 import React from "react";
 import Button from "../ui/Button";
 import { deletePost } from "@/actions/postAction";
+import { toast } from "sonner";
 
 const PostDelete = ({ postid }: { postid: string }) => {
   const handleDelete = async () => {
@@ -11,8 +12,10 @@ const PostDelete = ({ postid }: { postid: string }) => {
       );
       if (!isDelete) return;
       await deletePost(postid);
+      toast.success("Post Deleted");
     } catch (error) {
       console.log(error);
+      toast.error("Something went wrong");
     }
   };
   return (

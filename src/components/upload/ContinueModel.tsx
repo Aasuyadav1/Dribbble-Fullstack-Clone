@@ -8,6 +8,7 @@ import Button from "../ui/Button";
 import { useStore } from '@/store/useStore';
 import { createPost, getPostById, updatePost } from "@/actions/postAction";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const ContinueModel = ({ updateId, postData }: { updateId?: string, postData?: any }) => {
   const router = useRouter();
@@ -76,14 +77,16 @@ const ContinueModel = ({ updateId, postData }: { updateId?: string, postData?: a
       });
 
       if (uploadedData) {
+        toast.success("Post created successfully");
+        router.push(`/${uploadedData?.user}`);
         setIsOpen(false);
         emptyData();
-        router.push(`/${uploadedData?.user}`);
         setLoading(false);
       }
 
     } catch (error) {
       console.log("error while upload post", error)
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -91,11 +94,8 @@ const ContinueModel = ({ updateId, postData }: { updateId?: string, postData?: a
 
   const handleUpdate = async () => {
     if (!isUpdate) return;
-    console.log(postData)
-    
     try {
       setLoading(true);
-
       const postUpd = await updatePost({
         title: data.title,
         image: data.image,
@@ -106,15 +106,17 @@ const ContinueModel = ({ updateId, postData }: { updateId?: string, postData?: a
       });
 
       if (postUpd) {
+        toast.success("Post updated successfully");
+        router.push(`/${postUpd?.user}`);
         setIsOpen(false);
         setIsUpdate(false);
         setLoading(false);
-        router.push(`/${postUpd?.user}`);
         emptyData();
       }
 
     } catch (error) {
       console.log("error while update post", error)
+      toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -154,10 +156,6 @@ const ContinueModel = ({ updateId, postData }: { updateId?: string, postData?: a
     <>
       <div className="w-fit" onClick={() => {
         setIsOpen(true);
-        console.log('open mode update', updateId);
-        console.log('open mode post', postData)
-        console.log('open mode', data);
-        console.log('open mode postd', postD);
       }}>
         <Button disabled={!image.imageUrl || !title} className={`px-6 py-2 bg-secondaryDark border border-zinc-800 rounded-full text-primary font-semibold ${!image.imageUrl || !title ? 'cursor-not-allowed' : 'cursor-default'}`}>
           Continue
