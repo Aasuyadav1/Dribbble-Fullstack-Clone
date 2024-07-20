@@ -1,29 +1,38 @@
-import React from 'react'
-import PostCard from '@/components/profile/PostCard'
-import { getPostByUserCategory } from '@/actions/postAction'
-import { getLikesPostByUser } from '@/actions/likeAction'
-import { getBookmarkedPostByUser } from '@/actions/bookmarkAction'
+import React from "react";
+import PostCard from "@/components/profile/PostCard";
+import { getPostByUserCategory } from "@/actions/postAction";
+import { getLikesPostByUser } from "@/actions/likeAction";
+import { getBookmarkedPostByUser } from "@/actions/bookmarkAction";
+import NotFound from "@/components/NotFound";
 
-const page = async ({ params }: { params: { category: string, id: string } }) => {
+const page = async ({
+  params,
+}: {
+  params: { category: string; id: string };
+}) => {
   let posts = [];
 
-  if (params.category === 'like') {
+  if (params.category === "like") {
     posts = await getLikesPostByUser(params.id);
-  } else if (params.category === 'bookmark') {
+  } else if (params.category === "bookmark") {
     posts = await getBookmarkedPostByUser(params.id);
   } else {
     posts = await getPostByUserCategory(params.id, params.category);
   }
 
   return (
-    <div className="w-full mt-10 h-full flex flex-wrap gap-4 ">
+    <div className="w-full mt-10 h-full ">
       {posts.length > 0 ? (
-        posts.map((post: any, i: number) => <PostCard key={i} data={post} />)
+        <div className="grid grid-cols-2 gap-4 md:gap-10 md:grid-cols-4">
+          {posts.map((post: any, i: number) => (
+            <PostCard key={i} data={post} />
+          ))}
+        </div>
       ) : (
-        <div>Not found</div>
+        <NotFound heading="No Post Found" subHeading="It seems we can’t find any posts "/>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

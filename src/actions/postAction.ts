@@ -159,7 +159,7 @@ export const deletePost = async (id: string) => {
 export const searchPostsByTitle = async (query: string) => {
     try {
         await dbConnect();
-        const posts = await Post.find({ title: { $regex: query, $options: 'i' } });
+        const posts = await Post.find({ title: { $regex: query, $options: 'i' } }).populate('user');
         return JSON.parse(JSON.stringify(posts));
     } catch (error) {
         throw new Error("Failed to search posts by title");
