@@ -18,7 +18,7 @@ const PostCard = async ({data, isFotter = true} : {data: any, isFotter?: boolean
     <div className='w-fit h-fit overflow-hidden  '>
     <div className='w-fit cursor-pointer p-0 con h-fit relative group overflow-hidden rounded-xl '>
     <Link href={`/post/${data?._id}`}>
-    <Image src={data?.image[0]} className="rounded-md bg-slate-50 w-[282px] h-[211px] aspect-square object-fill"
+    <Image src={data?.image[0]} className="rounded-md bg-slate-50 w-full h-full sm:w-[282px] sm:h-[211px] aspect-[1/0] object-fill"
           alt="dribbble"
           width={273}
           objectFit="fill"

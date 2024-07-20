@@ -18,15 +18,14 @@ const Card = async ({ data }: any) => {
   const isBookmarked = data.bookmarks.includes(session?.user?.id) || false;
 
   return (
-    <div className="w-fit  ">
+    <div className="w-full ">
       <div className="w-full cursor-pointer p-0 con h-fit relative group overflow-hidden rounded-xl">
         <DrawerServerWrapper openBtn={
           <Image
           src={data.image[0]}
-          className="rounded-md bg-slate-50 w-[282px] h-[211px] aspect-square object-fill"
+          className="rounded-md bg-slate-50 w-full h-full sm:w-[282px] sm:h-[211px] aspect-[1/0] object-fill"
           alt="dribbble"
           width={273}
-          objectFit="fill"
           height={1000}
         />}
               

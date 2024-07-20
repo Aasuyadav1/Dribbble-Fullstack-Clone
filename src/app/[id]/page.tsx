@@ -13,10 +13,12 @@ const page = async ({ params }: any) => {
   if (!user) return null;
   const posts = await getPostsByUser(user._id);
 
+  
+
   return (
     <div className="w-full h-full  mt-10 ">
       {posts.length > 0 ? (
-        <div className="grid grid-cols-2 gap-4 md:gap-10 md:grid-cols-4">
+        <div className="w-full mt-10 h-full grid grid-cols-1 gap-4 md:gap-10 md:grid-cols-4 px-2 md:px-16">
           {posts.map((post: any, i: number) => (
             <PostCard key={i} data={post} />
           ))}

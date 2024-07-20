@@ -9,7 +9,7 @@ const Category = () => {
   const category: string[] = ["All", "Coding", "UIUX", "Photography", "Design", "Portfolio"]
 
   return (
-    <div className='w-full flex gap-3 items-center'>
+    <div className='w-full flex gap-3 items-center overflow-x-auto'>
       {
         category.map((item, index) => {
           const isActive = item === "All" ? pathname === '/' : pathname === `/category/${item}`;
