@@ -2,6 +2,7 @@ import React from "react";
 import { getUserById } from "@/actions/userAction";
 import ProfileHead from "@/components/profile/ProfileHead";
 import ProfileSectionHead from "@/components/profile/ProfileSectionHead";
+import { notFound } from "next/navigation";
 
 const layout = async ({
   children,
@@ -12,7 +13,7 @@ const layout = async ({
 }>) => {
   const user = await getUserById(params.id);
   console.log(user);
-  if (!user) return null;
+  if (!user) return notFound();
   return (
     <div className="px-2 md:px-16">
       <ProfileHead User={user} />
