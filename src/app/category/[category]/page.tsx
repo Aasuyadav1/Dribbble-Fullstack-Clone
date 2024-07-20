@@ -8,7 +8,7 @@ const page = async  ({ params }: { params: { category: string } }) => {
   return (
     <main className="bg-primary mt-10  px-16">
       <Category />
-      <div className="w-ful mt-10 h-full flex flex-wrap gap-4 ">
+      <div className="w-full mt-10 h-full flex flex-wrap gap-4 ">
         {posts.length > 0 ? (
           posts.map((post: any, i: number) => <Card key={i} data={post} />)
         ) : (

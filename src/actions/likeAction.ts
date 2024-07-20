@@ -57,8 +57,9 @@ export const toggleLike = async ({ post }: LikeType) => {
 export const getLikesPostByUser = async (user: string) => {
     try {
         await dbConnect();
-        const likes = await Like.find({ user });
-        return JSON.parse(JSON.stringify(likes));
+        const likes = await Like.find({ user }).populate('post');
+        const posts = await Post.find({ _id: { $in: likes.map((like) => like.post) } });
+        return JSON.parse(JSON.stringify(posts));
     } catch (error) {
         throw new Error("Failed to fetch likes");
     }

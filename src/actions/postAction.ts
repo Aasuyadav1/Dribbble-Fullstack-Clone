@@ -186,6 +186,24 @@ export const searchPostsByTags = async (tags: string) => {
     }
 }
 
+export const getPostByUserCategory = async (user: string, category: string) => {
+    try {
+        const posts = await Post.find({ user, category });
+
+        return JSON.parse(JSON.stringify(posts));
+    } catch (error) {
+        console.log("Failed to fetch posts", error);
+    }
+}
+
+// export const getPostByParams = async (user : string, filter: string) => {
+//     try {
+//         const posts = await Post.find
+//     } catch (error) {
+//         console.log("Failed to fetch posts", error);
+//     }
+// }
+
 
 // export const toogleLikePost = async ({post}: LikeType) => {
 //     try {

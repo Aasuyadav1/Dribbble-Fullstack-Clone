@@ -17,8 +17,8 @@ const page = async ({params}: any) => {
     const posts = await getPostsByUser(user._id)
 
   return (
-    <div className='w-ful h-full grid grid-cols-2 gap-4 md:gap-10 md:grid-cols-4 mt-10 '>
-     
+    <div className='w-full h-full grid grid-cols-2 gap-4 md:gap-10 md:grid-cols-4 mt-10 '>
+
      {
        posts ? (
         posts.map((post : any, i : number) => (

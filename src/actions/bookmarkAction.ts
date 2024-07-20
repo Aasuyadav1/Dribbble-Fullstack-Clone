@@ -6,6 +6,7 @@ import Post from "@/model/postModel";
 import { getUser } from "./userAction";
 import { revalidatePath } from "next/cache";
 
+
 export const toggleBookmark = async ({ post }: { post: string }) => {
   try {
     await dbConnect();
@@ -49,5 +50,15 @@ export const toggleBookmark = async ({ post }: { post: string }) => {
     }
   } catch (error) {
     console.log("Failed to toggle bookmark", error);
+  }
+};
+
+export const getBookmarkedPostByUser = async (user: string) => {
+  try {
+    const bookmarks = await Bookmark.find({ user: user }).populate('post');
+    const posts = await Post.find({ _id: { $in: bookmarks.map((bookmark) => bookmark.post) } });
+    return JSON.parse(JSON.stringify(posts));
+  } catch (error) {
+    console.log("Failed to fetch posts", error);
   }
 };
