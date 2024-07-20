@@ -5,7 +5,7 @@ import ProfileHead from "@/components/profile/ProfileHead";
 import ProfileSectionHead from "@/components/profile/ProfileSectionHead";
 import PostCard from "@/components/profile/PostCard";
 import { getPostsByUser } from "@/actions/postAction";
-import NotFound from "@/components/NotFound";
+import NotFound from "@/components/NotFoundData";
 
 const page = async ({ params }: any) => {
 

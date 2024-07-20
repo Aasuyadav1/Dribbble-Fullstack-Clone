@@ -7,7 +7,7 @@ interface Props {
     subHeading?: string
 }
 
-const NotFound = ({heading = "Result not found", subHeading = "It seems we can’t find any results based on your search."} : Props) => {
+const NotFoundData = ({heading = "Result not found", subHeading = "It seems we can’t find any results based on your search."} : Props) => {
   return (
     <div className='w-full h-full flex flex-col justify-center items-center'>
         <Image src={NotFoundImage} alt="notfound" height={500} width={500} />
@@ -17,4 +17,4 @@ const NotFound = ({heading = "Result not found", subHeading = "It seems we can�
   )
 }
 
-export default NotFound
+export default NotFoundData

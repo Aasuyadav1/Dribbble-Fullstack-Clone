@@ -3,7 +3,7 @@ import PostCard from "@/components/profile/PostCard";
 import { getPostByUserCategory } from "@/actions/postAction";
 import { getLikesPostByUser } from "@/actions/likeAction";
 import { getBookmarkedPostByUser } from "@/actions/bookmarkAction";
-import NotFound from "@/components/NotFound";
+import NotFound from "@/components/NotFoundData";
 
 const page = async ({
   params,
