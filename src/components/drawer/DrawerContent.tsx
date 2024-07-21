@@ -47,7 +47,7 @@ const DrawerContent = async ({
           alt="dribbble"
           priority={true}
         />
-        <div className="absolute bg-white rounded-tl-xl rounded-bl-xl p-2 right-0 top-24 xl:top-24 xl:-right-44">
+        <div className="xl:absolute fixed bg-white rounded-tl-xl xl:shadow-none rounded-bl-xl p-2 right-0 top-36 z-10 xl:top-24 xl:-right-44 shadow-lg">
           <RightSection postid={postid} data={data} />
         </div>
       </div>

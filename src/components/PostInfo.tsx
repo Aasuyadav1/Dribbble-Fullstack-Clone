@@ -9,14 +9,14 @@ const PostInfo = ({ postid, data }: { postid: string; data: any }) => {
     <div className="w-full">
       <Modal
       openBtn={
-        <div className="opacity-80 border border-zinc-400 cursor-pointer text-[40px] rounded-full h-fit w-fit p-2">
+        <div className="opacity-80  border border-zinc-400 cursor-pointer text-[40px] rounded-full  h-fit w-fit p-2">
           <IoIosInformationCircleOutline className="text-xl" />
         </div>
       }
       open={open}
       isOpen={isOpen}
     >
-      <div className="w-full  px-6 py-4">
+      <div className="w-full px-2 md:px-6 py-4  shadow-xl">
         <h1 className="text-2xl font-bold mt-4">Shorts Details</h1>
         <p className="text-sm mt-2 text-secondaryDark/70 font-medium ">published on {new Date(data.createdAt).toLocaleDateString("en-US", {
                   day: "numeric",
