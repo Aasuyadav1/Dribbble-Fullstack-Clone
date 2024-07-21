@@ -13,7 +13,7 @@ const page = async  ({ params }: any) => {
       <div className=" flex justify-center items-center flex-col ">
         <div className=" w-full h-full">
           <div className="w-full">
-            <h1 className="text-3xl mt-14 max-w-[950px] w-full mx-auto font-semibold text-left">
+            <h1 className="text-3xl mt-14 max-w-[950px] w-full mx-auto font-semibold text-left px-2">
               {post?.title}
             </h1>
             <SingleCardHeader postid={params?.id} data={post} />

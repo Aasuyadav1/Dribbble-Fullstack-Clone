@@ -24,7 +24,7 @@ const SingleCardHeader = async ({
   console.log("ise followed", isFollowed);
 
   return (
-    <div className=" !w-full sticky -top-[1px] left-0 z-10 h-fit rounded-t-xl  bg-white py-3 ">
+    <div className="px-2 !w-full sticky -top-[1px] left-0 z-10 h-fit rounded-t-xl  bg-white py-3 ">
       <div className="flex justify-between items-center max-w-[950px] w-full mx-auto">
       <div className="flex gap-2 items-center">
         <Image
