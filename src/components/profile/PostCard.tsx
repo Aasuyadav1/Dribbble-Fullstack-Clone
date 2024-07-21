@@ -13,18 +13,20 @@ const PostCard = async ({
   data: any;
   isFotter?: boolean;
 }) => {
+
   const session: any = await auth();
 
   const isLiked = data?.likes?.includes(session?.user?.id) || false;
 
   const isBookmarked = data?.bookmarks?.includes(session?.user?.id) || false;
+
   return (
-    <div className="sm:w-fit w-full ">
+    <div className="sm:w-fit w-full">
       <div className="w-full cursor-pointer p-0 con h-full relative group overflow-hidden rounded-xl ">
-        <Link className="w-fit h-full" href={`/post/${data?._id}`}>
+        <Link  href={`/post/${data?._id}`}>
           <Image
              src={data.image[0]}
-             className="rounded-md bg-slate-50 w-full h-full sm:w-[282px] sm:h-[211px] aspect-[1/0] object-fill"
+             className="rounded-md bg-slate-50 w-full  sm:w-[282px] sm:h-[211px] aspect-[1/0] object-fill"
              alt="dribbble"
              width={282}
              height={1000}

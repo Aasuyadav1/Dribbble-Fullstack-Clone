@@ -4,10 +4,15 @@ import { CldUploadWidget, CldImage } from "next-cloudinary";
 import { useStore } from "@/store/useStore";
 import { getPostById } from "@/actions/postAction";
 
-
-const UploadWidget = ({ updateId, postData }: { updateId?: string, postData?: any }) => {
-  const { title, image, setTitle, setImage } = useStore( (state) => state);
-  const [data, setData] = useState(null)
+const UploadWidget = ({
+  updateId,
+  postData,
+}: {
+  updateId?: string;
+  postData?: any;
+}) => {
+  const { title, image, setTitle, setImage } = useStore((state) => state);
+  const [data, setData] = useState(null);
 
   const handleSuccessWidget = (result: any) => {
     if (result.event === "success") {
@@ -16,25 +21,22 @@ const UploadWidget = ({ updateId, postData }: { updateId?: string, postData?: an
         imageUrl: result.info.secure_url,
       });
     }
-
   };
 
-  
-
-  useEffect(()=>{
-    if(updateId && postData){
-      setTitle(postData.title)
+  useEffect(() => {
+    if (updateId && postData) {
+      setTitle(postData.title);
       setImage({
-        publicId: '',
-        imageUrl: postData.image[0]
-      })
+        publicId: "",
+        imageUrl: postData.image[0],
+      });
     }
-  },[updateId])
+  }, [updateId]);
 
   return (
-    <div className="w-full px-40 py-10">
+    <div className="w-full px-2 md:px-40 py-10">
       <div className="mb-6 flex gap-6">
-        <div className="bg-secondaryDark text-primary grid place-content-center h-fit px-4 py-3 rounded-md max-w-[200px] w-full relative -z-10 select-none">
+        <div className="bg-secondaryDark text-primary place-content-center h-fit px-4 py-3 rounded-md max-w-[200px] w-full relative -z-10 select-none sm:grid hidden">
           Start by giving short name
           <span className="absolute top-1/2 -right-1 -translate-y-1/2 w-4 h-4 bg-secondaryDark rotate-45"></span>
         </div>

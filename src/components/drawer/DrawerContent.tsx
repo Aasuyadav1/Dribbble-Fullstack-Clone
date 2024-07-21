@@ -34,7 +34,7 @@ const DrawerContent = async ({
   const view = await incrementViews(postid);
 
   return (
-    <div className="sm:max-w-[950px] px-2 w-full mx-auto mt-10 sm:pb-10">
+    <div className="max-w-[950px] px-2 w-full mx-auto mt-10 sm:pb-10">
       <div className="flex items-center relative">
         <Image
           src={data?.image[0]}
@@ -47,7 +47,7 @@ const DrawerContent = async ({
           alt="dribbble"
           priority={true}
         />
-        <div className="absolute bg-white rounded-tl-xl rounded-bl-xl p-2 right-0 top-24 xl:top-24 sl:-right-44">
+        <div className="absolute bg-white rounded-tl-xl rounded-bl-xl p-2 right-0 top-24 xl:top-24 xl:-right-44">
           <RightSection postid={postid} data={data} />
         </div>
       </div>
@@ -71,7 +71,7 @@ const DrawerContent = async ({
           <h1 className="text-left font-semibold text-xl">
             More by ( {data?.user?.username} )
           </h1>
-          <div className=" flex flex-wrap gap-4 mt-8 items-center justify-start ">
+          <div className="sm:flex sm:flex-wrap gap-4 mt-8 items-center justify-start grid grid-cols-1">
             {filteredPosts?.map((post: any) => (
               <PostCard
                 key={post?._id}

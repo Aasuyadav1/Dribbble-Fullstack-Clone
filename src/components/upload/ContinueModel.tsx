@@ -181,7 +181,7 @@ const ContinueModel = ({ updateId, postData }: { updateId?: string, postData?: a
               className="py-4 px-10 rounded-xl max-w-[800px] w-full border-2 shadow-md bg-primary"
             >
               <h1 className="text-xl font-semibold mt-10">Final Touches</h1>
-              <div className="grid grid-cols-2 gap-10 mt-10">
+              <div className="sm:grid sm:grid-cols-2 flex flex-col gap-10 mt-10">
                 <div className="w-full">
                   <h1 className="text-secondaryDark font-semibold text-sm">
                     Thumbnail preview

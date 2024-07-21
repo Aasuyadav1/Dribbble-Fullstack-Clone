@@ -23,7 +23,7 @@ const page = async ({
   return (
     <div className="w-full mt-10 h-full ">
       {posts.length > 0 ? (
-        <div className="w-full mt-10 h-full grid grid-cols-1 gap-4 md:gap-10 md:grid-cols-4 px-2 md:px-16">
+        <div className="sm:flex sm:flex-wrap gap-10 mt-8 items-center justify-start grid grid-cols-1">
           {posts.map((post: any, i: number) => (
             <PostCard key={i} data={post} />
           ))}
