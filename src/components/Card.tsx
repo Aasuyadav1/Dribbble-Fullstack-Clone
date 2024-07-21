@@ -23,7 +23,7 @@ const Card = async ({ data }: any) => {
         <DrawerServerWrapper openBtn={
           <Image
           src={data.image[0]}
-          className="rounded-md bg-slate-50 w-full h-full sm:w-[282px] sm:h-[211px] aspect-[1/0] object-fill"
+          className="rounded-md bg-slate-50 w-full h-full md:w-[282px] md:h-[211px] aspect-[1/0] object-fill"
           alt="dribbble"
           width={273}
           height={1000}
@@ -39,7 +39,7 @@ const Card = async ({ data }: any) => {
           </div>
         </div>
       </div>
-      <div className="mt-1 flex py-1 px-1 justify-between items-center">
+      <div className="smmt-1 flex py-1 px-1 justify-between items-center">
         <div className="flex gap-2 items-center">
           <Image
             src={data.user.image}
