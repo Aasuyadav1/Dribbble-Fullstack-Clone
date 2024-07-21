@@ -52,7 +52,7 @@ const PostCard = async ({
               <PiEyeFill className="text-secondary/50 text-xl " />
               <h1 className="text-secondaryDark/50 font-medium text-xs">
                 {" "}
-                {data?.views?.length || 0}k
+                {data?.views || 0}
               </h1>
             </div>
           </div>

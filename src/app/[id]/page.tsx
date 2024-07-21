@@ -1,8 +1,5 @@
 import React from "react";
-import Image from "next/image";
 import { getUserById } from "@/actions/userAction";
-import ProfileHead from "@/components/profile/ProfileHead";
-import ProfileSectionHead from "@/components/profile/ProfileSectionHead";
 import PostCard from "@/components/profile/PostCard";
 import { getPostsByUser } from "@/actions/postAction";
 import NotFound from "@/components/NotFoundData";
@@ -12,8 +9,6 @@ const page = async ({ params }: any) => {
   const user = await getUserById(params.id);
   if (!user) return null;
   const posts = await getPostsByUser(user._id);
-
-  
 
   return (
     <div className="w-full h-full  mt-10 ">

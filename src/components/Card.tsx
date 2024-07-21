@@ -6,6 +6,7 @@ import LikeBtn from "./LikeBtn";
 import { auth } from "../../auth";
 import BookmarkBtn from "./BookmarkBtn";
 import DrawerServerWrapper from "./drawer/DrawerServerWrapper";
+import Link from "next/link";
 
 
 
@@ -41,6 +42,7 @@ const Card = async ({ data }: any) => {
       </div>
       <div className="smmt-1 flex py-1 px-1 justify-between items-center">
         <div className="flex gap-2 items-center">
+          <Link className="cursor-pointer" href={`/${data.user._id}`}>
           <Image
             src={data.user.image}
             height={25}
@@ -48,9 +50,12 @@ const Card = async ({ data }: any) => {
             alt="dribbble"
             className="rounded-full"
           />
+          </Link>
+          <Link className="cursor-pointer" href={`/${data.user._id}`}>
           <h1 className="text-secondaryDark font-medium text-sm">
             {data.user.username}
           </h1>
+          </Link>
         </div>
         <div className="flex gap-2 items-center">
           {/* <div className='flex gap-1 items-center'>

@@ -9,7 +9,7 @@ const ProfileHead = async ({User}: {User: UserType}) => {
     const numberOfLikes = await getLikesPostByUser(User?._id)
   return (
     <div className='w-full mt-10 flex justify-center items-center '>
-        <div className='w-full flex justify-center gap-8 items-start'>
+        <div className='w-full flex justify-center flex-col gap-8 sm:flex-row items-start'>
             {
                 User?.image ? (
                     <Image
