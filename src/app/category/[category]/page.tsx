@@ -3,6 +3,7 @@ import Category from "@/components/Category";
 import { getPostsByCategory } from "@/actions/postAction";
 import Card from "@/components/Card";
 import NotFoundData from "@/components/NotFoundData";
+
 const page = async  ({ params }: { params: { category: string } }) => {
   const posts = await getPostsByCategory(params.category);
 
@@ -14,6 +15,7 @@ const page = async  ({ params }: { params: { category: string } }) => {
           posts.map((post: any, i: number) => <Card key={i} data={post} />)
         }</div>   : <NotFoundData />
       }
+    
     </main>
   );
 };

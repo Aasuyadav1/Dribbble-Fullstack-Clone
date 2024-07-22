@@ -5,6 +5,8 @@ import { getUser } from "./userAction";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import mongoose from "mongoose";
+import User from "@/model/userModel";
+import { auth } from "../../auth";
 
 interface PostActionType {
         title: string;
@@ -196,38 +198,38 @@ export const getPostByUserCategory = async (user: string, category: string) => {
     }
 }
 
-// export const getPostByParams = async (user : string, filter: string) => {
-//     try {
-//         const posts = await Post.find
-//     } catch (error) {
-//         console.log("Failed to fetch posts", error);
-//     }
-// }
+export const getPostFollowing = async () => {
+    try {
 
+        const currentUser = await auth();
 
-// export const toogleLikePost = async ({post}: LikeType) => {
-//     try {
-//         const session = await getUser();
-//         if (!session) {
-//             console.log("session not found");
-//             return null;
-//         }
-
-//         const like = {
-//             user: session.id,
-//             post
-//         }
-
-//         await dbConnect();
-
-//         const existingLike = await Post.findOne({ user: session.id, post: post });
-
-
-//     } catch (error) {
+        if(!currentUser) return null
         
-//     }
-    
-// }
+        const getUser = await User.findById(currentUser.user.id);
+        
+        const followingUsers = await getUser.following;
+
+        const followedPosts = await Post.find({ user: { $in: followingUsers } }).populate('user');
+
+
+        return JSON.parse(JSON.stringify(followedPosts));
+    } catch (error) {
+        console.log("error getting while fetching following posts",error)
+    }
+}
+
+export const getPopularPosts = async () => {
+    try {
+        const posts = await Post.find().sort({ views: -1 }).populate('user');
+
+        return JSON.parse(JSON.stringify(posts));
+    } catch (error) {
+       console.log("error getting popular posts", error) 
+    }
+}
+
+
+
 
 
 
