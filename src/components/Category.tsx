@@ -17,7 +17,7 @@ const Category = () => {
   const filter: string[] = ["Following", "Popular", "All"];
 
   return (
-    <div className='w-full flex justify-between gap-3 items-center overflow-x-auto'>
+    <div className='w-full flex  gap-24 items-center overflow-x-auto'>
       <div className='max-w-[150px] w-full h-full'> 
         <SelectCmp Options={filter} setSelectValue={setSelectValue} selectValue={selectValue} isLink={true} />
       </div>
@@ -37,10 +37,10 @@ const Category = () => {
           })
         }
       </div>
-      <Button className="bg-transparent border-2 !text-black font-normal rounded-full flex gap-2 items-center hover:!bg-[#e5e5ea]">
+      {/* <Button className="bg-transparent border-2 !text-black font-normal rounded-full flex gap-2 items-center hover:!bg-[#e5e5ea]">
         <IoFilterSharp/>
         Filter
-      </Button>
+      </Button> */}
     </div>
   );
 }

@@ -5,6 +5,8 @@ import NavSearch from "./NavSearch";
 import Profile from "./Profile";
 import Dribbble from "../../../public/images/dribbble-logo.png"
 import { auth } from "../../../auth";
+import Button from "../ui/Button";
+
 
 
 const Navbar = async () => {
@@ -25,7 +27,11 @@ const Navbar = async () => {
       <div className="flex gap-10 items-center">
         <NavSearch />
        {
-        session ?  <Profile  session={session.user}/> : null
+        session ?  <Profile  session={session.user}/> : <Link href={"/login"}>
+          <Button className="!text-black !bg-transparent font-medium border-2 rounded-full">
+          Login
+        </Button>
+        </Link>
        }
       </div>
     </nav>

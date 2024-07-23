@@ -117,7 +117,7 @@ const SelectCmp = ({
                     <input
                       onChange={(e) => {
                         setSelectValue(e.target.value);
-                        handleRedirect(e.target.value)
+                        if (isLink) handleRedirect(e.target.value);
                         setMounted(false);
                       }}
                       type="radio"

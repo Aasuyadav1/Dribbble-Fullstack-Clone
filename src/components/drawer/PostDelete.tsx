@@ -3,8 +3,10 @@ import React from "react";
 import Button from "../ui/Button";
 import { deletePost } from "@/actions/postAction";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const PostDelete = ({ postid }: { postid: string }) => {
+  const router = useRouter();
   const handleDelete = async () => {
     try {
       const isDelete = await confirm(
@@ -13,9 +15,10 @@ const PostDelete = ({ postid }: { postid: string }) => {
       if (!isDelete) return;
       await deletePost(postid);
       toast.success("Post Deleted");
+      router.push("/");
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      
     }
   };
   return (

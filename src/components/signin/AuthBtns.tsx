@@ -17,7 +17,7 @@ const AuthBtns = () => {
   const handleSignIn = async (provider: "github" | "google") => {
     try {
       setLoading((prev) => ({ ...prev, [provider]: true }));
-      await signIn(provider);
+      await signIn(provider, { callbackUrl: "/" });
     } catch (error) {
       console.error(`Error signing in with ${provider}:`, error);
     } finally {
