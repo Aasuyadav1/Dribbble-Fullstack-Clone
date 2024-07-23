@@ -60,7 +60,7 @@ const RightSection = async ({
 
       {session?.user?.id === data?.user?._id && (
         <Link
-          href={`/edit/${data?._id}`}
+        href={`/uploads/new/${postid}`}
           className="mt-4 opacity-80 border border-zinc-400 cursor-pointer text-[40px] rounded-full h-fit w-fit p-2"
         >
           <FiEdit2 className="text-xl " />

@@ -1,10 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import { getPostsByUser } from "@/actions/postAction";
+import { getPostsByUser, getPostsByCategory, incrementViews } from "@/actions/postAction";
 import PostCard from "../profile/PostCard";
-import { getPostsByCategory } from "@/actions/postAction";
 import RightSection from "../rightsection/RightSection";
-import { incrementViews } from "@/actions/postAction";
 import Link from "next/link";
 import Button from "../ui/Button";
 import PostDelete from "./PostDelete";
@@ -19,7 +17,7 @@ const DrawerContent = async ({
 }) => {
   const userPosts = await getPostsByUser(data?.user?._id);
 
-  const filteredPosts = await userPosts?.filter(
+  const filteredPosts = userPosts?.filter(
     (post: any) => post?._id !== postid
   );
 
@@ -27,8 +25,11 @@ const DrawerContent = async ({
 
   const relatedPosts = await getPostsByCategory(data?.category);
 
-  const filteredRelatedPosts = await relatedPosts?.filter(
-    (post: any) => post?._id !== postid
+  const displayedPostIds = new Set(filteredPosts.map((post: any) => post?._id));
+  displayedPostIds.add(postid); // Ensure the current post ID is also excluded
+
+  const filteredRelatedPosts = relatedPosts?.filter(
+    (post: any) => !displayedPostIds.has(post?._id)
   );
 
   const view = await incrementViews(postid);
@@ -51,7 +52,7 @@ const DrawerContent = async ({
           <RightSection postid={postid} data={data} />
         </div>
       </div>
-      <h2 className="text-center font-medium  text-secondary mt-4">
+      <h2 className="text-center font-medium text-secondary mt-4">
         {data?.description}
       </h2>
       {session?.user?.id === data?.user?._id && (
@@ -75,7 +76,6 @@ const DrawerContent = async ({
             {filteredPosts?.map((post: any) => (
               <PostCard
                 key={post?._id}
-                // postid={post?._id}
                 data={post}
                 isFotter={false}
               />
@@ -92,7 +92,6 @@ const DrawerContent = async ({
             {filteredRelatedPosts?.map((post: any) => (
               <PostCard
                 key={post?._id}
-                // postid={post?._id}
                 data={post}
                 isFotter={false}
               />

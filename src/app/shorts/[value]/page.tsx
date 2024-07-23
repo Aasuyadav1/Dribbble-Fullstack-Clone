@@ -21,7 +21,7 @@ const page = async ({params}: Props) => {
     }
     const filter: string[] = ["Following", "Popular", "All"];
   return (
-    <div className="bg-primary mt-2 sm:mt-10 px-2 md:px-16">
+    <div className=" mt-2 sm:mt-10 px-2 md:px-16">
         <Category/>
       {
         posts.length > 0 ? <div className="w-full mt-2 md:mt-10 h-full grid grid-cols-1 gap-4 md:gap-10 md:grid-cols-4 px-2 md:px-16">{

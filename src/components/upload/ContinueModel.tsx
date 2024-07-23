@@ -27,7 +27,7 @@ const ContinueModel = ({ updateId, postData }: { updateId?: string, postData?: a
   const [mounted, setMounted] = useState(false);
   const [isUpdate, setIsUpdate] = useState(!!updateId);
 
-  const Options = ["Coding", "UI/UX", "Photography", "Design", "Portfolio"];
+  const Options = ["Coding", "UIUX", "Photography", "Design", "Portfolio"];
 
 
   const mainVariants: any = {
