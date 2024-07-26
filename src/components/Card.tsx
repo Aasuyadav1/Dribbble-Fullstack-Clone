@@ -55,7 +55,7 @@ const Card = async ({ data }: any) => {
           ) : (
             <Link className="cursor-pointer" href={`/${data.user._id}`}>
               <div className="h-[25px] w-[25px] text-md rounded-full text-white font-medium cursor-pointer bg-purple-500 grid place-content-center">
-                {data?.user?.name?.charAt(0)}
+                {data?.user?.username?.charAt(0)}
               </div>
             </Link>
           )}
