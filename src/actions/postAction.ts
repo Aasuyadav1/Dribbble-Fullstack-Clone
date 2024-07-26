@@ -13,7 +13,7 @@ interface PostActionType {
         image: string;
         description: string;
         category?: string;
-        tags?: string;
+        tags?: string[];
         id? : string;
 }
 

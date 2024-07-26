@@ -30,7 +30,6 @@ const ContinueModel = ({
     image: image.imageUrl,
     category: selectValue,
     description: postData?.description || "",
-    tags: postData?.tags || "",
   });
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -59,10 +58,10 @@ const ContinueModel = ({
       image: "",
       category: "Random category",
       description: "",
-      tags: "",
     });
     setSelectValue("Random category");
     setTitle("");
+    setTags([]);
     setImage({
       publicId: "",
       imageUrl: "",
@@ -81,7 +80,7 @@ const ContinueModel = ({
       !data.image ||
       !data.category ||
       !data.description ||
-      !data.tags
+      !tags
     )
       return toast.error("Please fill all the fields");
     try {
@@ -91,7 +90,7 @@ const ContinueModel = ({
         image: data.image,
         description: data.description,
         category: data.category,
-        tags: data.tags,
+        tags: tags,
       });
 
       if (uploadedData) {
@@ -116,7 +115,7 @@ const ContinueModel = ({
       !data.image ||
       !data.category ||
       !data.description ||
-      !data.tags
+      !tags
     )
       return toast.error("Please fill all the fields");
     try {
@@ -126,7 +125,7 @@ const ContinueModel = ({
         image: data.image,
         description: data.description,
         category: data.category,
-        tags: data.tags,
+        tags: tags,
         id: updateId,
       });
 
@@ -170,8 +169,8 @@ const ContinueModel = ({
         image: postData.image || image.imageUrl,
         category: postData.category || "Random category",
         description: postData.description || "",
-        tags: postData.tags || "",
       });
+      setTags(postData.tags || []);
       setSelectValue(postData.category || "Random category");
     } else {
       setIsUpdate(false);
