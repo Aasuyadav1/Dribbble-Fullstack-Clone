@@ -209,7 +209,7 @@ const ContinueModel = ({
             variants={sectionVariants}
             transition={{ duration: 0.2 }}
             onClick={(e) => e.stopPropagation()}
-            className="py-4 px-10 rounded-xl max-w-[800px] w-full border-2 shadow-md bg-primary"
+            className="py-4 px-10 rounded-xl max-w-[800px] w-full border-2 shadow-md bg-primary overflow-y-scroll md:overflow-auto"
           >
             <h1 className="text-xl font-semibold mt-10">Final Touches</h1>
             <div className="sm:grid sm:grid-cols-2 flex flex-col gap-10 mt-10">
