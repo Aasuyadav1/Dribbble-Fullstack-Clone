@@ -31,8 +31,10 @@ export const toggleFollow = async ({ user }: { user: string }) => {
         { $pull: { followers: session.id } },
         { new: true }
       );
+      
       revalidatePath('/');
       revalidatePath('/[id]');
+      return true;
     } else {
         await User.findByIdAndUpdate(
             session.id,
@@ -47,6 +49,8 @@ export const toggleFollow = async ({ user }: { user: string }) => {
 
       revalidatePath('/');
       revalidatePath('/[id]');
+
+      return true;
 
     }
   } catch (error) {

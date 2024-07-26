@@ -8,7 +8,7 @@ type ModalProps = {
   children: React.ReactNode;
   open: boolean;
   isOpen: (open: boolean) => void;
-  openBtn: React.ReactNode;
+  openBtn?: React.ReactNode;
 };
 const Modal = ({
   children,
@@ -36,7 +36,7 @@ const Modal = ({
   }, []);
   return (
     <>
-      <div className="w-fit" onClick={() => isOpen(true)}>
+      <div className="w-full" onClick={() => isOpen(true)}>
         {openBtn}
       </div>
 
@@ -46,7 +46,7 @@ const Modal = ({
           animate={open ? "open" : "close"}
           variants={mainVariants}
           transition={{ duration: 0.2 }}
-          // onClick={() => isOpen(false)}
+          onClick={() => isOpen(false)}
           initial={{ visibility: "hidden", opacity: 0 }}
           className="bg-black/50  z-50 fixed inset-0 h-screen w-screen grid place-content-center overflow-hidden"
         >
@@ -55,7 +55,7 @@ const Modal = ({
             variants={sectionVariants}
             transition={{ duration: 0.2 }}
             onClick={(e) => e.stopPropagation()}
-            className="rounded-xl !max-w-[900px] w-full  border-2 shadow-md bg-primary"
+            className="rounded-xl w-full  border-2 shadow-md bg-primary"
           >
             <div className="  bg-white font-semibold flex items-center justify-between relative">
               

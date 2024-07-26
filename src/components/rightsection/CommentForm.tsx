@@ -8,7 +8,7 @@ import { updateComment } from "@/actions/commentAction";
 import { toast } from "sonner";
 
 const CommentForm = ({ postid }: { postid: string }) => {
-  const { setComments, setEmptyComments, comments } = useStore(
+  const { setComments, setEmptyComments, comments, setLoginModalOpen } = useStore(
     (state) => state
   );
   const [isUpdate, setIsUpdate] = useState(false);
@@ -19,12 +19,16 @@ const CommentForm = ({ postid }: { postid: string }) => {
     if (isUpdate) return;
     setIsLoading(true);
     try {
-      await createComment({
+       const res = await createComment({
         postId: postid,
         content: content,
       });
-      setContent("");
+      if(res){
+        setContent("");
       toast.success("Comment Added");
+      } else {
+        setLoginModalOpen(true);
+      }
       setEmptyComments();
     } catch (error) {
       console.log(error);

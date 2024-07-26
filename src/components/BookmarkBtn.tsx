@@ -4,6 +4,7 @@ import { toggleBookmark } from "@/actions/bookmarkAction";
 import { useOptimistic } from "react";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { IoBookmark } from "react-icons/io5";
+import { useStore } from "@/store/useStore";
 
 interface LikeBtnType {
   isBookmarked: boolean;
@@ -11,6 +12,7 @@ interface LikeBtnType {
 }
 
 const BookmarkBtn = ({ isBookmarked, _id }: LikeBtnType) => {
+  const {setLoginModalOpen} = useStore((state) => state);
   const [optimisticState, setOptimisticState] = useOptimistic(
     { isBookmarked },
     (optimisticState, newLikeState) => ({
@@ -22,7 +24,10 @@ const BookmarkBtn = ({ isBookmarked, _id }: LikeBtnType) => {
   const handleToggleBookMark = async () => {
     setOptimisticState("");
     try {
-      await toggleBookmark({ post: _id });
+      const res = await toggleBookmark({ post: _id });
+      if(!res){
+        setLoginModalOpen(true);
+      }
     } catch (error) {
       setOptimisticState("");
       console.error("Error toggling Bookmark:", error);

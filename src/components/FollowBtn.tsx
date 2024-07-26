@@ -2,8 +2,10 @@
 import React from 'react'
 import { toggleFollow } from '@/actions/followAction'
 import { useOptimistic } from 'react'
+import { useStore } from '@/store/useStore'
 
 const FollowBtn = ({isFollowed, _id} : {isFollowed: boolean, _id: string}) => {
+  const {setLoginModalOpen} = useStore((state) => state);
 
   const [optimisticState, setOptimisticState] = useOptimistic(
     { isFollowed },
@@ -16,7 +18,10 @@ const FollowBtn = ({isFollowed, _id} : {isFollowed: boolean, _id: string}) => {
   const handleToggleFollow = async () => {
     setOptimisticState("");
     try {
-      await toggleFollow({user: _id})
+      const res = await toggleFollow({user: _id})
+      if(!res){
+        setLoginModalOpen(true);
+      }
     } catch (error) {
       setOptimisticState("");
       console.error("Error toggling Bookmark:", error);

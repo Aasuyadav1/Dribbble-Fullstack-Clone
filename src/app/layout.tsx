@@ -5,6 +5,7 @@ import Provider from "@/components/Provider";
 import Navbar from "@/components/navbar/Navbar";
 import NextTopLoader from 'nextjs-toploader';
 import { Toaster } from "sonner";
+import LoginModal from "@/components/signin/loginModal";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}><Provider>
       <NextTopLoader color="#E94C88" />
-        <Navbar />{children}<Toaster /></Provider></body>
+        <Navbar />{children}<Toaster /><LoginModal /></Provider></body>
     </html>
   );
 }

@@ -57,7 +57,7 @@ const DevPopover = ({
           >
             <div
               ref={popoverRef}
-              className="min-h-4 text-black dark:text-white bg-slate-50 shadow-md border border-slate-500/50 min-w-24 rounded-lg p-1 z-50"
+              className="min-h-4 mt-2 text-black dark:text-white bg-slate-50 shadow-lg border border-slate-500/50 min-w-24 rounded-lg p-1 z-50"
               onClick={() => contentClick && togglePopover()}
             >
               {children && children}

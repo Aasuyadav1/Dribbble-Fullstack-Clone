@@ -47,6 +47,7 @@ export const toggleBookmark = async ({ post }: { post: string }) => {
       });
       revalidatePath('/');
       revalidatePath('/[id]');
+      return JSON.parse(JSON.stringify(newBookmark));
     }
   } catch (error) {
     console.log("Failed to toggle bookmark", error);

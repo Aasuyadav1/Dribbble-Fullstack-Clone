@@ -3,6 +3,7 @@ import React from "react";
 import { GoHeartFill } from "react-icons/go";
 import { toggleLike } from "@/actions/likeAction";
 import { useOptimistic } from "react";
+import { useStore } from "@/store/useStore";
 
 interface LikeBtnType {
   like: number;
@@ -12,6 +13,7 @@ interface LikeBtnType {
 }
 
 const LikeBtn = ({ like, _id, isLiked, showCount = true }: LikeBtnType) => {
+  const {setLoginModalOpen} = useStore((state) => state);
   const [optimisticState, setOptimisticState] = useOptimistic(
     { likeCount: like, isLiked },
     (optimisticState, newLikeState) => ({
@@ -19,10 +21,15 @@ const LikeBtn = ({ like, _id, isLiked, showCount = true }: LikeBtnType) => {
       isLiked: !optimisticState.isLiked,
     })
   );
+
   const handleToggleLike = async () => {
     setOptimisticState('');
     try {
-      await toggleLike({ post: _id });
+      const res = await toggleLike({ post: _id });
+      if(!res){
+        setLoginModalOpen(true);
+        console.error("Error toggling like:", res);
+      }
     } catch (error) {
       setOptimisticState('');
       console.error("Error toggling like:", error);
