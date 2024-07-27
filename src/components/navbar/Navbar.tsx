@@ -12,7 +12,7 @@ import Button from "../ui/Button";
 const Navbar = async () => {
   const session = await auth();
   return (
-    <nav className="flex gap-2 w-full px-2 py-2 sm:px-12 sm:py-6 bg-primary justify-between items-center p-4">
+    <nav className="flex gap-4 w-full px-2 py-2 sm:px-12 sm:py-6 bg-primary justify-between items-center p-4">
       <div>
         <Link href="/">
           <Image

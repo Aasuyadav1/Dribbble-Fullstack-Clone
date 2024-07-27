@@ -1,14 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Button from "../ui/Button";
-import CommentDis from "./CommentDis";
 import { createComment } from "@/actions/commentAction";
 import { useStore } from "@/store/useStore";
 import { updateComment } from "@/actions/commentAction";
 import { toast } from "sonner";
 
 const CommentForm = ({ postid }: { postid: string }) => {
-  const { setComments, setEmptyComments, comments, setLoginModalOpen } = useStore(
+  const { setComments, setEmptyComments, comments } = useStore(
     (state) => state
   );
   const [isUpdate, setIsUpdate] = useState(false);
@@ -27,7 +26,7 @@ const CommentForm = ({ postid }: { postid: string }) => {
         setContent("");
       toast.success("Comment Added");
       } else {
-        setLoginModalOpen(true);
+        toast.info("Please login first");
       }
       setEmptyComments();
     } catch (error) {

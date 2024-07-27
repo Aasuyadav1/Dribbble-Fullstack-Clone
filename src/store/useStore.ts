@@ -18,8 +18,6 @@ interface StoreState {
   setImage: (image: { publicId: string; imageUrl: string }) => void;
   setComments: (name: string, value: string) => void;
   setEmptyComments: () => void;
-  loginModalOpen: boolean;
-  setLoginModalOpen: (value: boolean) => void;
 }
 
 export const useStore = create<StoreState>((set) => ({
@@ -34,8 +32,6 @@ export const useStore = create<StoreState>((set) => ({
     postId: '',
     userId: '',
   },
-  loginModalOpen: false,
-  setLoginModalOpen: (value) => set((state) => ({ loginModalOpen: value })),
   setTitle: (title) => set({ title }),
   setImage: (image) => set({ image }),
   setComments: (name, value) => set((state) => ({

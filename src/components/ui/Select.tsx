@@ -124,7 +124,7 @@ const SelectCmp = ({
                       id={elem}
                       name="select"
                       value={elem}
-                      className="opacity-0"
+                      className="opacity-0 w-full "
                     />
                   </label>
                 // )
@@ -136,7 +136,7 @@ const SelectCmp = ({
       <button
         onClick={() => setMounted(!mounted)}
         data-tooltip-id={randomId}
-        className="w-full transition-all flex  items-center justify-between focus:bg-[#f2f2f7] border-zinc-400 bg-primary py-1 border rounded-md px-2"
+        className="w-full transition-all flex  items-center justify-between focus:bg-[#f2f2f7] border-zinc-400 bg-primary py-1 border rounded-md   px-2"
         ref={buttonRef}
       >
         {selectValue}

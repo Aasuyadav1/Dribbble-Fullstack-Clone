@@ -1,12 +1,9 @@
 'use client'
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import SelectCmp from './ui/Select'
-import { IoFilterSharp } from "react-icons/io5";
-import Button from "@/components/ui/Button";
 import { useSelectStore } from "@/store/useSelect";
-
 
 const Category = () => {
   const pathname = usePathname();
@@ -18,7 +15,7 @@ const Category = () => {
 
   return (
     <div className='w-full flex gap-4  md:gap-24 items-center mt-4'>
-      <div className='w-[150px] h-full'> 
+      <div className='!w-[150px] h-full'> 
         <SelectCmp Options={filter} setSelectValue={setSelectValue} selectValue={selectValue} isLink={true} />
       </div>
       <div className='flex gap-3 justify-start items-center overflow-x-auto'>

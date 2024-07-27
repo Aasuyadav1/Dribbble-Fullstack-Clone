@@ -46,12 +46,12 @@ export default function VaulDrawer({
       setEmptyComments();
   },[])
   return (
-    <Drawer.Root direction={position} shouldScaleBackground>
+    <Drawer.Root  direction={position} setBackgroundColorOnScale={false} noBodyStyles={true} shouldScaleBackground>
       <Drawer.Trigger asChild>{openBtn}</Drawer.Trigger>
-      <Drawer.Portal>
-        <Drawer.Overlay className={`fixed inset-0 ${position === "right" ? 'bg-black/10' : 'bg-black/80'} outline-none z-50 `} />
+        <Drawer.Portal >
+        <Drawer.Overlay className={`fixed inset-0 ${position === "right" ? 'bg-black/10' : 'bg-black/80'} outline-none z-40 `} />
         <Drawer.Content
-          className={`z-50 bg-white ${
+          className={`z-40 bg-white ${
             getPositionClasses().content
           } fixed  outline-none`}
         >

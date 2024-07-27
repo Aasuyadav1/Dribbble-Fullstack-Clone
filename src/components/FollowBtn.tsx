@@ -2,10 +2,9 @@
 import React from 'react'
 import { toggleFollow } from '@/actions/followAction'
 import { useOptimistic } from 'react'
-import { useStore } from '@/store/useStore'
+import { toast } from 'sonner'
 
 const FollowBtn = ({isFollowed, _id} : {isFollowed: boolean, _id: string}) => {
-  const {setLoginModalOpen} = useStore((state) => state);
 
   const [optimisticState, setOptimisticState] = useOptimistic(
     { isFollowed },
@@ -20,7 +19,7 @@ const FollowBtn = ({isFollowed, _id} : {isFollowed: boolean, _id: string}) => {
     try {
       const res = await toggleFollow({user: _id})
       if(!res){
-        setLoginModalOpen(true);
+        toast.info("Please login first");
       }
     } catch (error) {
       setOptimisticState("");

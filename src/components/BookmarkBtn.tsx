@@ -4,7 +4,7 @@ import { toggleBookmark } from "@/actions/bookmarkAction";
 import { useOptimistic } from "react";
 import { IoBookmarkOutline } from "react-icons/io5";
 import { IoBookmark } from "react-icons/io5";
-import { useStore } from "@/store/useStore";
+import { toast } from "sonner";
 
 interface LikeBtnType {
   isBookmarked: boolean;
@@ -12,7 +12,6 @@ interface LikeBtnType {
 }
 
 const BookmarkBtn = ({ isBookmarked, _id }: LikeBtnType) => {
-  const {setLoginModalOpen} = useStore((state) => state);
   const [optimisticState, setOptimisticState] = useOptimistic(
     { isBookmarked },
     (optimisticState, newLikeState) => ({
@@ -26,7 +25,7 @@ const BookmarkBtn = ({ isBookmarked, _id }: LikeBtnType) => {
     try {
       const res = await toggleBookmark({ post: _id });
       if(!res){
-        setLoginModalOpen(true);
+        toast.info("Please login first");
       }
     } catch (error) {
       setOptimisticState("");
