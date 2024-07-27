@@ -10,7 +10,7 @@ const LoginModal = (props: Props) => {
   const { loginModalOpen, setLoginModalOpen } = useStore((state) => state);
   return (
       <Modal open={loginModalOpen} isOpen={setLoginModalOpen}>
-        <div className="!w-[450px] p-2 flex flex-col  justify-center">
+        <div className="w-full p-2 flex flex-col  justify-center">
           <h1 className="text-3xl font-semibold mt-2">
             Login to <span className="text-accent">Dribbble</span>
           </h1>

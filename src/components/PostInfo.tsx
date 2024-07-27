@@ -23,7 +23,7 @@ const PostInfo = ({ postid, data }: { postid: string; data: any }) => {
                   month: "short",
                   year: "numeric",
                 })}</p>
-        <div className="flex mt-2 gap-6">
+        <div className="flex flex-wrap mt-2 gap-6">
         <div className="p-3">
             <h1 className="text-lg font-semibold mt-4">Views</h1>
             <p className="text-sm">{data.views}</p>

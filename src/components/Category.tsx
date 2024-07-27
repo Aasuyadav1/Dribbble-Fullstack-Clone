@@ -17,11 +17,11 @@ const Category = () => {
   const filter: string[] = ["Following", "Popular", "All"];
 
   return (
-    <div className='w-full flex gap-4  md:gap-24 items-center overflow-x-auto mt-4'>
+    <div className='w-full flex gap-4  md:gap-24 items-center mt-4'>
       <div className='w-[150px] h-full'> 
         <SelectCmp Options={filter} setSelectValue={setSelectValue} selectValue={selectValue} isLink={true} />
       </div>
-      <div className='flex gap-3 justify-start items-center'>
+      <div className='flex gap-3 justify-start items-center overflow-x-auto'>
         {
           category.map((item, index) => {
             const isActive = item === "All" ? pathname === '/' : pathname === `/category/${item}`;
