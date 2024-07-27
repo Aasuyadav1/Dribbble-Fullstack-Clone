@@ -12,18 +12,18 @@ interface Props {
 const ProfileDropdown = ({ session }: Props) => {
   if (!session) return null;
   return (
-    <div className={`w-[320px] py-2  rounded-xl  z-[9999] `}>
+    <div className={`w-[280px] py-2  rounded-xl  z-[9999] `}>
       <div className="w-full flex justify-center items-center flex-col">
         {session?.image ? (
           <Image
             src={session?.image}
             width={100}
             height={100}
-            className="rounded-full"
+            className="rounded-full !w-[100px] !h-[100px] cursor-pointer"
             alt="profile"
           />
         ) : (
-          <div className="h-[100px] w-[100px] text-6xl rounded-full text-white font-medium cursor-pointer bg-purple-500 grid place-content-center">
+          <div className="!h-[100px] !w-[100px] text-6xl rounded-full text-white font-medium cursor-pointer bg-purple-500 grid place-content-center">
             {session.name?.charAt(0)}
           </div>
         )}

@@ -9,10 +9,10 @@ interface Props {
 
 const NotFoundData = ({heading = "Result not found", subHeading = "It seems we can’t find any results based on your search."} : Props) => {
   return (
-    <div className='w-full h-full flex flex-col justify-center items-center'>
+    <div className='w-full h-full flex flex-col justify-center items-center p-2'>
         <Image src={NotFoundImage} alt="notfound" height={500} width={500} />
-        <h1 className='font-semibold text-xl'>{heading}</h1>
-        <p className='font-medium mt-2 text-black/50'>{subHeading}</p>
+        <h1 className='font-semibold text-xl text-center'>{heading}</h1>
+        <p className='font-medium mt-2 text-center text-black/50'>{subHeading}</p>
     </div>
   )
 }

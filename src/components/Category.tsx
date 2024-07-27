@@ -15,7 +15,7 @@ const Category = () => {
 
   return (
     <div className='w-full flex gap-4  md:gap-24 items-center mt-4'>
-      <div className='!w-[150px] h-full'> 
+      <div className='!w-[400px] sm:!w-[150px]'> 
         <SelectCmp Options={filter} setSelectValue={setSelectValue} selectValue={selectValue} isLink={true} />
       </div>
       <div className='flex gap-3 justify-start items-center overflow-x-auto'>

@@ -20,7 +20,7 @@ const page: React.FC<PageProps> = async ({ params }) => {
     <div className="w-full mt-10 ">
       <SearchCmp value={filteredValue} />
       {posts.length > 0 ? (
-        <div className="w-full mt-10 h-full grid grid-cols-1 gap-4 md:gap-10 md:grid-cols-4 px-2 md:px-16">
+        <div className="w-full mt-10 h-full grid grid-cols-1 gap-4 md:gap-10 md:grid-cols-3 xl:grid-cols-4 px-2 md:px-16">
           {posts.map((post: any, i: number) => (
             <Card key={i} data={post} />
           ))}

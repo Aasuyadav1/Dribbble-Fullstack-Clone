@@ -107,7 +107,7 @@ const SelectCmp = ({
                 // ) : (
                   <label
                     className={clsx(
-                      "hover:bg-[#e5e5ea] text-left rounded-lg p-1 overflow-hidden w-full px-2 cursor-pointer",
+                      "hover:bg-[#e5e5ea] text-left rounded-lg p-1 overflow-hidden w-full h-fit px-2 cursor-pointer",
                       selectValue === elem && "bg-[#e5e5ea]"
                     )}
                     key={i}
@@ -124,7 +124,7 @@ const SelectCmp = ({
                       id={elem}
                       name="select"
                       value={elem}
-                      className="opacity-0 w-full "
+                      className="opacity-0  "
                     />
                   </label>
                 // )
