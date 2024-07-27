@@ -21,6 +21,7 @@ const SearchCmp = ({ value }: { value: string }) => {
                     <input
                         type="text"
                         id='search-sh'
+                        readOnly
                         placeholder='Search...'
                         value={searchVal}
                         onChange={(e) => setSearchVal(e.target.value)}
