@@ -1,8 +1,6 @@
 # Dribbble Clone Fullstack Project
 
-## Description
-
-A fullstack clone of Dribbble built with Next.js, Server Actions, MongoDB, and Tailwind CSS. Features include user authentication, post uploads, likes, comments, and bookmarks.
+![dribbble clone]('https://res.cloudinary.com/driaaeuhp/image/upload/v1722952448/myPortfolio/private/t7moxq5emam50zapp32h.jpg')
 
 ## Tech Stack
 
