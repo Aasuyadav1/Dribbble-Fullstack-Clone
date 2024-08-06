@@ -1,6 +1,6 @@
 # Dribbble Clone Fullstack Project
 
-![dribbble clone]('https://res.cloudinary.com/driaaeuhp/image/upload/v1722952448/myPortfolio/private/t7moxq5emam50zapp32h.jpg')
+![dribbble clone](https://res.cloudinary.com/driaaeuhp/image/upload/v1722952448/myPortfolio/private/t7moxq5emam50zapp32h.jpg)
 
 ## Tech Stack
 
